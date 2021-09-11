@@ -1,17 +1,14 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+//引入react核心库
+import React from 'react'
+//引入页面渲染库ReactDOM
+import ReactDOM from 'react-dom'
+//引入App
+import App from './App'
 
-ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
-);
+import memoryUtils from "./utils/memoryUtils";
+import storeUtils from "./utils/storeUtils";
 
-// If you want to start measuring performance in your app, pass a function
-// to log results (for example: reportWebVitals(console.log))
-// or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
-reportWebVitals();
+//读取local中的user，保存到内存中,方便以后的动作都从内存中取登录用户
+memoryUtils.user = storeUtils.getUser()
+
+ReactDOM.render(<App/>,document.getElementById('root'))
